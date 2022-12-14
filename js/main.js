@@ -17,7 +17,7 @@ let porcentTip;
 //Evento para escuchar a que boton estamos dando click
 porcentDiv.addEventListener('click', (e) => {
   porcentTip = e.target;
-  console.log(porcenTip);
+  //console.log(porcenTip);
   //condicion escuchar custom
   if (e.target.id === 'custom-tip') {
     console.log('Si soy custom');
@@ -42,10 +42,10 @@ form.addEventListener('submit', (e) => {
 
   //Constantes 
   const tipFinal = tipCalculator(subtotalF, porcentTipF, personasf);
-  console.log('soy total propina' + tipFinal);
+  console.log('soy propina  ' + tipFinal);
   const totalF = totalFinal(subtotalF, personasf, tipFinal);
 
-  console.log('soy total f' + totalF);
+  console.log('soy total a pagar' + totalF);
 });
 
 //const resultadoTip = tipCalculator(subtotal, porcentTip, persona);
