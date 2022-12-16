@@ -41,7 +41,7 @@ form.addEventListener('submit', (e) => {
   const { subtotalF, porcentTipF, personasf } = formulario;
 
   //Constantes 
-  const tipFinal = tipCalculator(subtotalF, porcentTipF, personasf);
+  const tipFinal = tipCalculator(subtotalF, porcentTipF, personasf) ;
   console.log('soy propina  ' + tipFinal);
   const totalF = totalFinal(subtotalF, personasf, tipFinal);
 
