@@ -1,56 +1,84 @@
 import tipCalculator from './modules/tipCalculator.js';
 import totalFinal from './modules/totalFinal.js';
+import updateTip from './modules/updateTip.js';
+import updateTotal from './modules/updateTotal.js';
 
-//constante de los elementos html
+// Connstantes de los elementos de HTML
 const main = document.getElementById('main');
 const form = document.getElementById('main-form');
-//guardar valores en variables
+
+const tipResult = document.getElementById('result-tip');
+const totalResult = document.getElementById('result-total');
+
+// Custom box
+const customTip = document.getElementById('custom-tip');
+
+// Guardar valores en variables
 const subtotal = document.getElementById('total-bill');
-const porcentDiv = document.getElementById('forms-btns');
-const persona = document.getElementById('total-people');
+const porcenDiv = document.getElementById('form-btns');
+const personas = document.getElementById('total-people');
+
+// Metodo para seleccionar todos los botones
+const btns = document.querySelectorAll('.form__box__container__btn');
+const resetBtn = document.getElementById('reset-btn');
 
 
-//variable para almacenar el valor porcentual seleccionado
+// Variable para almacenar el valor porcentual seleccionado
+let porcenTip;
+let custom;
 
-let porcentTip;
-
-//Evento para escuchar a que boton estamos dando click
-porcentDiv.addEventListener('click', (e) => {
-  porcentTip = e.target;
-  //console.log(porcenTip);
-  //condicion escuchar custom
-  if (e.target.id === 'custom-tip') {
-    console.log('Si soy custom');
-
+// Evento para escuchar a que boton le estamos dando click
+porcenDiv.addEventListener('click', (e) => {
+  for(let i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
   }
 
+  porcenTip = e.target;
+  porcenTip.classList.add('active');
 
+  console.log(porcenTip);
+
+  // Condicion para escuchar al custom
+  if (e.target === customTip) {
+    custom = e.target;
+
+    custom.classList.remove('active');
+  }
 });
 
-
+// Crear un evento de submit para la forma
 form.addEventListener('submit', (e) => {
-  //evitar por defecto
+  // Evitar la action por defecto
   e.preventDefault();
 
-  //crear objeto
+  // crear objecto constante con los valores de la forma
   const formulario = {
-    subtotalF: subtotal.value,
-    porcentTipF: porcentTip.value,
-    personasf: persona.value,
+    subTotalF: subtotal.value,
+    porcenTipF: porcenTip.value,
+    personasF: personas.value,
   }
-  const { subtotalF, porcentTipF, personasf } = formulario;
 
-  //Constantes 
-  const tipFinal = tipCalculator(subtotalF, porcentTipF, personasf) ;
-  console.log('soy propina  ' + tipFinal);
-  const totalF = totalFinal(subtotalF, personasf, tipFinal);
+  const { subTotalF, porcenTipF, personasF } = formulario;
 
-  console.log('soy total a pagar' + totalF);
+  const tipFinal = tipCalculator(subTotalF, porcenTipF, personasF);
+
+  const totalF = totalFinal(subTotalF, personasF, tipFinal);
+
+  // Llamar a las funciones que actualizan el DOM
+  updateTip(tipFinal, tipResult);
+  updateTotal(totalF, totalResult);
 });
 
-//const resultadoTip = tipCalculator(subtotal, porcentTip, persona);
-//valores decimales
+// Boton para reiniciar la tip calculator
+resetBtn.addEventListener('click', (e) => {
+  subtotal.value = '';
+  customTip.value = '';
+  personas.value = '';
 
+  for(let i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
 
-//const resultadoFinal = totalFinal(subtotal, persona, resultadoTip);
-//valores decimales
+  tipResult.innerText = '$0.00';
+  totalResult.innerText = '$0.00';
+});

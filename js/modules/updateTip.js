@@ -3,3 +3,4 @@ function updateTip(tipFinal, element){
 
 
 }
+export default updateTip;
