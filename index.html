@@ -34,13 +34,13 @@
       />
     </header>
     <!--Main secction-->
-    <main id="main">
+    <main id="main" class="main">
       <form id="main-form" class="form">
         <div class="form__box">
           <label for="" class="form__box__label">Bill</label>
           <div class="form__box__inputs">
             <img src="./assets/img/icon-dollar.svg" alt="Simbolo de dollar" />
-            <input type="number" id="total-bill" />
+            <input type="number" id="total-bill" required placeholder="0" />
           </div>
         </div>
         <div class="form__box">
@@ -97,21 +97,24 @@
               src="./assets/img/icon-person.svg"
               alt="icono de una persona"
             />
-            <input type="number" id="total-people" />
+            <input type="number" id="total-people" required placeholder="0" />
           </div>
         </div>
 
-        <button type="submit">Calculate</button>
+        <button type="submit" class="form__calculate">Calculate</button>
       </form>
       <section id="result" class="result">
-        <div class="result__tip">
-          <h3>Tip Amount <span>/ person</span></h3>
-          <p id="result-tip">$0.00</p>
+        <div class="result__first">
+          <div class="result__box">
+            <h3>Tip Amount <span>/ person</span></h3>
+            <p id="result-tip">$0.00</p>
+          </div>
+          <div class="result__box">
+            <h3>Total <span>/ person</span></h3>
+            <p id="result-total">$0.00</p>
+          </div>
         </div>
-        <div class="result__total">
-          <h3>Total <span>/ person</span></h3>
-          <p id="result-total">$0.00</p>
-        </div>
+
         <button type="button" class="result__btn" id="reset-btn">Reset</button>
       </section>
     </main>

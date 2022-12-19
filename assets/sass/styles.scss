@@ -4,7 +4,11 @@
 $main-bg: hsl(185, 41%, 84%);
 $white: hsl(0, 0%, 100%);
 $input-bg: hsl(189, 41%, 97%);
+$btn-bg: hsl(183, 100%, 15%);
 $input-text: hsl(183, 100%, 15%);
+$btn-active: hsl(172, 67%, 45%);
+$btn-active-hover: hsl(172, 65%, 37%);
+$btn-active-act: hsl(172, 64%, 31%);
 
 * {
   margin: 0;
@@ -43,7 +47,8 @@ body {
 
 .main {
   background-color: $white;
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
+  padding: 0.5rem 0 1.75rem;
 }
 
 .form {
@@ -80,7 +85,7 @@ body {
         color: $input-text;
         font-weight: 700;
         z-index: 1;
-        width: 50%;
+        width: 95%;
       }
 
       /* Chrome, Safari, Edge, Opera */
@@ -103,7 +108,7 @@ body {
 
       &__btn {
         border: none;
-        background-color: hsl(183, 100%, 15%);
+        background-color: $btn-bg;
         color: $white;
         font-weight: 700;
         font-size: 1.5rem;
@@ -120,7 +125,7 @@ body {
       }
 
       &__btn.active {
-        background-color: hsl(172, 67%, 45%);
+        background-color: $btn-active;
         color: $input-text;
       }
 
@@ -128,43 +133,121 @@ body {
         text-align: right;
         background-color: $input-bg;
         color: $input-text;
+        width: 45%;
+        padding-right: 2%;
       }
     }
+  }
+  &__calculate {
+    border: none;
+    background-color: $btn-active;
+    color: $input-text;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.7rem 0;
+    border-radius: 0.4rem;
   }
 }
 .result {
+  background-color: $btn-bg;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
-  padding: 1.4rem;
-  background-color: hsl(183, 100%, 15%);
-  border-radius: 1rem;
-  width: 82%;
-  margin: 1.2rem 1rem 1.2rem 1.5rem;
-
-  &__tip {
+  padding: 2rem 1rem;
+  border-radius: 0.8rem;
+  margin: 0 1.4rem;
+  &__box {
     display: flex;
-    flex-direction: column;
+    color: $white;
+    justify-content: space-between;
+    margin-bottom: 1.4rem;
+
     h3 {
-      display: flex;
-      flex-direction: column;
-      color: $white;
+      font-size: 0.8rem;
+
       span {
+        display: block;
         color: hsl(184, 14%, 56%);
       }
     }
+
+    p {
+      color: $btn-active;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
   }
+
   &__btn {
-    padding: 1.1rem 1rem;
-    border-radius: 0.4rem;
-    color: $input-text;
     border: none;
-  }
-  button {
-    background-color: hsl(172, 67%, 45%);
+    background-color: $btn-active;
     color: $input-text;
+    font-size: 1.25rem;
     font-weight: 700;
-    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    border-radius: 0.4rem;
+    margin-top: 1rem;
+  }
+}
+
+//diseño de la desktop
+@media screen and (min-width: 600px) {
+  .header {
+    height: 20vh;
+
+    &__title {
+      width: 7%;
+      height: 28%;
+    }
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height: 60vh;
+    border-radius: 1rem;
+    margin: 0 auto;
+  }
+
+  .form {
+    width: 50%;
+
+    &__box {
+      &__container {
+        &__btn {
+          width: 30%;
+          padding: 0.2rem 0;
+          margin-right: 0;
+        }
+
+        &__btn:nth-child(1),
+        &__btn:nth-child(2),
+        &__btn:nth-child(4),
+        &__btn:nth-child(5) {
+          margin-right: 2%;
+        }
+
+        input {
+          width: 30%;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  .result {
+    width: 50%;
+    justify-content: space-between;
+
+    &__first {
+      margin: 1rem 0;
+    }
+
+    &__box:last-child {
+      margin-top: 2.75rem;
+    }
   }
 }
