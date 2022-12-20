@@ -209,6 +209,23 @@ body {
   .result__box:last-child {
     margin-top: 2.75rem;
   }
+  .result__box h3 {
+    font-size: 1rem;
+  }
+}
+.valid {
+  border: 1px solid hsl(172deg, 67%, 45%);
+}
+
+.invalid {
+  border: 1px solid red;
+}
+
+#not-valid1,
+#not-valid2,
+#not-valid3 {
+  color: red;
+  margin-left: 0.2rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

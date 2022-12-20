@@ -249,5 +249,24 @@ body {
     &__box:last-child {
       margin-top: 2.75rem;
     }
+    &__box {
+      h3 {
+        font-size: 1rem;
+      }
+    }
   }
+}
+//Clases de  validacion
+.valid {
+  border: 1px solid $btn-active;
+}
+
+.invalid {
+  border: 1px solid red;
+}
+#not-valid1,
+#not-valid2,
+#not-valid3 {
+  color: red;
+  margin-left: 0.2rem;
 }
