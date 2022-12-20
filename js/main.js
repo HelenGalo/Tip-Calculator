@@ -139,6 +139,7 @@ resetBtn.addEventListener('click', (e) => {
 /*
   Validacion de Forma
 */
+
 function notZero(input) {
   let check = true;
 
